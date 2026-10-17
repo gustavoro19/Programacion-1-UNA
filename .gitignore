@@ -1,0 +1,15 @@
+# Lista blanca: se ignora todo y solo se suben fuentes, Makefiles y docs del repo.
+# Así los ejecutables (que en macOS no tienen extensión), los .dSYM, los .o,
+# los zips, PDFs y capturas nunca entran por accidente.
+*
+!*/
+!*.cpp
+!*.h
+!Makefile
+!README.md
+!LICENSE
+!.gitignore
+
+# Carpetas que no se suben aunque tengan fuentes
+.vscode/
+*.dSYM/
