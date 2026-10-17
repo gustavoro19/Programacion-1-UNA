@@ -19,9 +19,9 @@ class Participante {
         Participante(string idParticipante, string nombre, string email);
         ~Participante();
         void responderEncuesta(Encuesta* encuesta);
-        vector<Respuesta*> obtenerRespuestas();
-        string obtenerNombre();
-        string obtenerId();
-        string obtenerEmail();
+        vector<Respuesta*> getRespuestas();
+        string getNombre();
+        string getId();
+        string getEmail();
 };
 #endif

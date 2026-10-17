@@ -12,9 +12,9 @@ class Opcion {
     public:
         Opcion(string idOpcion, string texto);
         void registrarVoto();
-        double obtenerPorcentaje(int totalVotos);
-        string obtenerId();
-        string obtenerTexto();
-        int obtenerVotos();
+        double getPorcentaje(int totalVotos);
+        string getId();
+        string getTexto();
+        int getVotos();
 };
 #endif

@@ -29,7 +29,7 @@ vector<string> PreguntaOpcionMultiple::separarIds(string valor){
 
 bool PreguntaOpcionMultiple::existeOpcion(string id){
     for (int i = 0; i < (int)opciones.size(); i++) {
-        if (opciones[i].obtenerId() == id) {
+        if (opciones[i].getId() == id) {
             return true;
         }
     }
@@ -37,18 +37,18 @@ bool PreguntaOpcionMultiple::existeOpcion(string id){
 }
 
 void PreguntaOpcionMultiple::agregarOpcion(Opcion opcion){
-    if (existeOpcion(opcion.obtenerId())) {
+    if (existeOpcion(opcion.getId())) {
         return;
     }
     opciones.push_back(opcion);
 }
 
-vector<Opcion> PreguntaOpcionMultiple::obtenerOpciones(){
+vector<Opcion> PreguntaOpcionMultiple::getOpciones(){
     return opciones;
 }
 
 bool PreguntaOpcionMultiple::validarRespuesta(Respuesta respuesta){
-    vector<string> ids = separarIds(respuesta.obtenerValor());
+    vector<string> ids = separarIds(respuesta.getValor());
     if (ids.size() == 0) {
         return !esObligatoria();
     }
@@ -68,14 +68,14 @@ bool PreguntaOpcionMultiple::validarRespuesta(Respuesta respuesta){
     return true;
 }
 
-string PreguntaOpcionMultiple::obtenerTipo(){
+string PreguntaOpcionMultiple::getTipo(){
     return "Opción múltiple";
 }
 
 void PreguntaOpcionMultiple::mostrar(){
     Pregunta::mostrar();
     for (int i = 0; i < (int)opciones.size(); i++) {
-        cout << "  " << opciones[i].obtenerId() << ") " << opciones[i].obtenerTexto() << endl;
+        cout << "  " << opciones[i].getId() << ") " << opciones[i].getTexto() << endl;
     }
     if (permiteVariasOpciones) {
         cout << "(puede elegir varias, separadas por coma: 1,3)" << endl;
@@ -88,17 +88,17 @@ void PreguntaOpcionMultiple::registrarVotos(string valor){
     vector<string> ids = separarIds(valor);
     for (int i = 0; i < (int)ids.size(); i++) {
         for (int j = 0; j < (int)opciones.size(); j++) {
-            if (opciones[j].obtenerId() == ids[i]) {
+            if (opciones[j].getId() == ids[i]) {
                 opciones[j].registrarVoto();
             }
         }
     }
 }
 
-int PreguntaOpcionMultiple::obtenerTotalVotos(){
+int PreguntaOpcionMultiple::getTotalVotos(){
     int total = 0;
     for (int i = 0; i < (int)opciones.size(); i++) {
-        total = total + opciones[i].obtenerVotos();
+        total = total + opciones[i].getVotos();
     }
     return total;
 }

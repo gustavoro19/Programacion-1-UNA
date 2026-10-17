@@ -10,13 +10,11 @@ class Respuesta {
     private:
         string idRespuesta;
         string valor;
-        string fechaHora;
         Pregunta* pregunta;
     public:
-        Respuesta(string idRespuesta, string valor, string fechaHora, Pregunta* pregunta);
-        string obtenerValor();
+        Respuesta(string idRespuesta, string valor, Pregunta* pregunta);
+        string getValor();
         bool esValida();
-        Pregunta* obtenerPregunta();
-        string obtenerFechaHora();
+        Pregunta* getPregunta();
 };
 #endif

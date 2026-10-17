@@ -9,7 +9,7 @@ PreguntaAbierta::PreguntaAbierta(string idPregunta, string titulo, string enunci
 }
 
 bool PreguntaAbierta::validarRespuesta(Respuesta respuesta){
-    string valor = respuesta.obtenerValor();
+    string valor = respuesta.getValor();
     if (valor == "") {
         return !esObligatoria();
     }
@@ -19,7 +19,7 @@ bool PreguntaAbierta::validarRespuesta(Respuesta respuesta){
     return true;
 }
 
-string PreguntaAbierta::obtenerTipo(){
+string PreguntaAbierta::getTipo(){
     return "Abierta";
 }
 

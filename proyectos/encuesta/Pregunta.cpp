@@ -13,13 +13,13 @@ Pregunta::Pregunta(string idPregunta, string titulo, string enunciado, bool obli
 Pregunta::~Pregunta(){
 }
 
-string Pregunta::obtenerTipo(){
+string Pregunta::getTipo(){
     return "Pregunta";
 }
 
 void Pregunta::mostrar(){
     cout << endl;
-    cout << titulo << " (" << obtenerTipo();
+    cout << titulo << " (" << getTipo();
     if (obligatoria) {
         cout << ", obligatoria)" << endl;
     } else {
@@ -28,15 +28,15 @@ void Pregunta::mostrar(){
     cout << enunciado << endl;
 }
 
-string Pregunta::obtenerId(){
+string Pregunta::getId(){
     return this->idPregunta;
 }
 
-string Pregunta::obtenerTitulo(){
+string Pregunta::getTitulo(){
     return this->titulo;
 }
 
-string Pregunta::obtenerEnunciado(){
+string Pregunta::getEnunciado(){
     return this->enunciado;
 }
 

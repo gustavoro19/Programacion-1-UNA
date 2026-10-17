@@ -8,7 +8,7 @@ class PreguntaAbierta : public Pregunta {
     public:
         PreguntaAbierta(string idPregunta, string titulo, string enunciado, bool obligatoria, int longitudMaxima);
         bool validarRespuesta(Respuesta respuesta);
-        string obtenerTipo();
+        string getTipo();
         void mostrar();
 };
 #endif

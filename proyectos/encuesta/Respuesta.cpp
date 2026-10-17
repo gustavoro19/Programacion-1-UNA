@@ -1,14 +1,13 @@
 #include "Respuesta.h"
 #include "Pregunta.h"
 
-Respuesta::Respuesta(string idRespuesta, string valor, string fechaHora, Pregunta* pregunta){
+Respuesta::Respuesta(string idRespuesta, string valor, Pregunta* pregunta){
     this->idRespuesta = idRespuesta;
     this->valor = valor;
-    this->fechaHora = fechaHora;
     this->pregunta = pregunta;
 }
 
-string Respuesta::obtenerValor(){
+string Respuesta::getValor(){
     return this->valor;
 }
 
@@ -19,10 +18,6 @@ bool Respuesta::esValida(){
     return pregunta->validarRespuesta(*this);
 }
 
-Pregunta* Respuesta::obtenerPregunta(){
+Pregunta* Respuesta::getPregunta(){
     return this->pregunta;
-}
-
-string Respuesta::obtenerFechaHora(){
-    return this->fechaHora;
 }

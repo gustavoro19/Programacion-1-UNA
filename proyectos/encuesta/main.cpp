@@ -84,7 +84,7 @@ int elegirEncuesta(vector<Encuesta*> &encuestas)
     cout << "  -------------------------------------------------------" << endl;
     for (int i = 0; i < (int)encuestas.size(); i++)
     {
-        cout << "  [" << i + 1 << "] " << encuestas[i]->obtenerTitulo();
+        cout << "  [" << i + 1 << "] " << encuestas[i]->getTitulo();
         if (encuestas[i]->estaActiva())
         {
             cout << "  (activa)" << endl;
@@ -108,8 +108,8 @@ int elegirParticipante(vector<Participante*> &participantes)
     cout << "  -------------------------------------------------------" << endl;
     for (int i = 0; i < (int)participantes.size(); i++)
     {
-        cout << "  [" << i + 1 << "] " << participantes[i]->obtenerNombre()
-             << "  (" << participantes[i]->obtenerId() << ")" << endl;
+        cout << "  [" << i + 1 << "] " << participantes[i]->getNombre()
+             << "  (" << participantes[i]->getId() << ")" << endl;
     }
     cout << "  [0] Volver" << endl;
     cout << endl;
@@ -121,11 +121,11 @@ int elegirParticipante(vector<Participante*> &participantes)
 void mostrarDetalleEncuesta(Encuesta *encuesta)
 {
     cout << endl;
-    cout << "  " << encuesta->obtenerTitulo() << endl;
+    cout << "  " << encuesta->getTitulo() << endl;
     cout << "  -------------------------------------------------------" << endl;
-    cout << "  Código          : " << encuesta->obtenerId() << endl;
-    cout << "  Descripción     : " << encuesta->obtenerDescripcion() << endl;
-    cout << "  Vigencia        : " << encuesta->obtenerFechaInicio() << " al " << encuesta->obtenerFechaFin() << endl;
+    cout << "  Código          : " << encuesta->getId() << endl;
+    cout << "  Descripción     : " << encuesta->getDescripcion() << endl;
+    cout << "  Vigencia        : " << encuesta->getFechaInicio() << " al " << encuesta->getFechaFin() << endl;
     if (encuesta->estaActiva())
     {
         cout << "  Estado          : activa" << endl;
@@ -134,32 +134,32 @@ void mostrarDetalleEncuesta(Encuesta *encuesta)
     {
         cout << "  Estado          : cerrada" << endl;
     }
-    cout << "  Preguntas       : " << encuesta->obtenerPreguntas().size() << endl;
-    cout << "  Participaciones : " << encuesta->obtenerCantidadRespuestas() << endl;
+    cout << "  Preguntas       : " << encuesta->getPreguntas().size() << endl;
+    cout << "  Participaciones : " << encuesta->getCantidadRespuestas() << endl;
 }
 
 void mostrarResultados(Encuesta *encuesta, vector<Participante*> &participantes)
 {
     cout << endl;
-    cout << "  RESULTADOS: " << encuesta->obtenerTitulo() << endl;
+    cout << "  RESULTADOS: " << encuesta->getTitulo() << endl;
     cout << "  -------------------------------------------------------" << endl;
-    cout << "  Participaciones: " << encuesta->obtenerCantidadRespuestas() << endl;
+    cout << "  Participaciones: " << encuesta->getCantidadRespuestas() << endl;
     cout << fixed << setprecision(1);
 
-    vector<Pregunta*> preguntas = encuesta->obtenerPreguntas();
+    vector<Pregunta*> preguntas = encuesta->getPreguntas();
     for (int i = 0; i < (int)preguntas.size(); i++)
     {
-        cout << endl << "  " << preguntas[i]->obtenerTitulo() << ": " << preguntas[i]->obtenerEnunciado() << endl;
+        cout << endl << "  " << preguntas[i]->getTitulo() << ": " << preguntas[i]->getEnunciado() << endl;
 
-        if (preguntas[i]->obtenerTipo() == "Opción múltiple")
+        if (preguntas[i]->getTipo() == "Opción múltiple")
         {
             PreguntaOpcionMultiple *multiple = (PreguntaOpcionMultiple*) preguntas[i];
-            int total = multiple->obtenerTotalVotos();
-            vector<Opcion> opciones = multiple->obtenerOpciones();
+            int total = multiple->getTotalVotos();
+            vector<Opcion> opciones = multiple->getOpciones();
             for (int j = 0; j < (int)opciones.size(); j++)
             {
-                cout << "    " << opciones[j].obtenerTexto() << ": " << opciones[j].obtenerVotos()
-                     << " votos (" << opciones[j].obtenerPorcentaje(total) << " %)" << endl;
+                cout << "    " << opciones[j].getTexto() << ": " << opciones[j].getVotos()
+                     << " votos (" << opciones[j].getPorcentaje(total) << " %)" << endl;
             }
         }
         else
@@ -167,19 +167,19 @@ void mostrarResultados(Encuesta *encuesta, vector<Participante*> &participantes)
             bool hayRespuestas = false;
             for (int j = 0; j < (int)participantes.size(); j++)
             {
-                vector<Respuesta*> respuestas = participantes[j]->obtenerRespuestas();
+                vector<Respuesta*> respuestas = participantes[j]->getRespuestas();
                 for (int k = 0; k < (int)respuestas.size(); k++)
                 {
-                    if (respuestas[k]->obtenerPregunta() == preguntas[i])
+                    if (respuestas[k]->getPregunta() == preguntas[i])
                     {
-                        cout << "    " << participantes[j]->obtenerNombre() << ": ";
-                        if (respuestas[k]->obtenerValor() == "")
+                        cout << "    " << participantes[j]->getNombre() << ": ";
+                        if (respuestas[k]->getValor() == "")
                         {
                             cout << "(sin respuesta)" << endl;
                         }
                         else
                         {
-                            cout << respuestas[k]->obtenerValor() << endl;
+                            cout << respuestas[k]->getValor() << endl;
                         }
                         hayRespuestas = true;
                     }
@@ -220,7 +220,7 @@ void menuEncuesta(Encuesta *encuesta, vector<Participante*> &participantes)
         {
         case 1:
         {
-            vector<Pregunta*> preguntas = encuesta->obtenerPreguntas();
+            vector<Pregunta*> preguntas = encuesta->getPreguntas();
             for (int i = 0; i < (int)preguntas.size(); i++)
             {
                 preguntas[i]->mostrar();
@@ -249,12 +249,12 @@ void menuEncuesta(Encuesta *encuesta, vector<Participante*> &participantes)
 void mostrarRespuestasDe(Participante *participante, vector<Encuesta*> &encuestas)
 {
     cout << endl;
-    cout << "  " << participante->obtenerNombre() << endl;
+    cout << "  " << participante->getNombre() << endl;
     cout << "  -------------------------------------------------------" << endl;
-    cout << "  Carné  : " << participante->obtenerId() << endl;
-    cout << "  Correo : " << participante->obtenerEmail() << endl;
+    cout << "  Carné  : " << participante->getId() << endl;
+    cout << "  Correo : " << participante->getEmail() << endl;
 
-    vector<Respuesta*> respuestas = participante->obtenerRespuestas();
+    vector<Respuesta*> respuestas = participante->getRespuestas();
     if (respuestas.size() == 0)
     {
         cout << endl << "  Todavía no ha respondido ninguna encuesta." << endl;
@@ -264,27 +264,26 @@ void mostrarRespuestasDe(Participante *participante, vector<Encuesta*> &encuesta
     for (int i = 0; i < (int)encuestas.size(); i++)
     {
         bool tituloImpreso = false;
-        vector<Pregunta*> preguntas = encuestas[i]->obtenerPreguntas();
+        vector<Pregunta*> preguntas = encuestas[i]->getPreguntas();
         for (int j = 0; j < (int)preguntas.size(); j++)
         {
             for (int k = 0; k < (int)respuestas.size(); k++)
             {
-                if (respuestas[k]->obtenerPregunta() == preguntas[j])
+                if (respuestas[k]->getPregunta() == preguntas[j])
                 {
                     if (!tituloImpreso)
                     {
-                        cout << endl << "  " << encuestas[i]->obtenerTitulo()
-                             << " (respondida el " << respuestas[k]->obtenerFechaHora() << ")" << endl;
+                        cout << endl << "  " << encuestas[i]->getTitulo() << endl;
                         tituloImpreso = true;
                     }
-                    cout << "    " << preguntas[j]->obtenerTitulo() << ": ";
-                    if (respuestas[k]->obtenerValor() == "")
+                    cout << "    " << preguntas[j]->getTitulo() << ": ";
+                    if (respuestas[k]->getValor() == "")
                     {
                         cout << "(sin respuesta)" << endl;
                     }
                     else
                     {
-                        cout << respuestas[k]->obtenerValor() << endl;
+                        cout << respuestas[k]->getValor() << endl;
                     }
                 }
             }
@@ -362,7 +361,7 @@ int main()
             {
                 break;
             }
-            cout << endl << "  ¿Qué encuesta va a responder " << participantes[posParticipante]->obtenerNombre() << "?" << endl;
+            cout << endl << "  ¿Qué encuesta va a responder " << participantes[posParticipante]->getNombre() << "?" << endl;
             int posEncuesta = elegirEncuesta(encuestas);
             if (posEncuesta == -1)
             {

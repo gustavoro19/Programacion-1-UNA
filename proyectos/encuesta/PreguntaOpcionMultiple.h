@@ -13,11 +13,11 @@ class PreguntaOpcionMultiple : public Pregunta {
     public:
         PreguntaOpcionMultiple(string idPregunta, string titulo, string enunciado, bool obligatoria, bool permiteVariasOpciones);
         void agregarOpcion(Opcion opcion);
-        vector<Opcion> obtenerOpciones();
+        vector<Opcion> getOpciones();
         bool validarRespuesta(Respuesta respuesta);
-        string obtenerTipo();
+        string getTipo();
         void mostrar();
         void registrarVotos(string valor);
-        int obtenerTotalVotos();
+        int getTotalVotos();
 };
 #endif

@@ -24,14 +24,14 @@ class Encuesta {
         void eliminarPregunta(Pregunta* pregunta);
         void activar();
         void cerrar();
-        vector<Pregunta*> obtenerPreguntas();
-        int obtenerCantidadRespuestas();
+        vector<Pregunta*> getPreguntas();
+        int getCantidadRespuestas();
         void registrarParticipacion();
         bool estaActiva();
-        string obtenerTitulo();
-        string obtenerId();
-        string obtenerDescripcion();
-        string obtenerFechaInicio();
-        string obtenerFechaFin();
+        string getTitulo();
+        string getId();
+        string getDescripcion();
+        string getFechaInicio();
+        string getFechaFin();
 };
 #endif

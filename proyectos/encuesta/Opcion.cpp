@@ -10,21 +10,21 @@ void Opcion::registrarVoto(){
     votos++;
 }
 
-double Opcion::obtenerPorcentaje(int totalVotos){
+double Opcion::getPorcentaje(int totalVotos){
     if (totalVotos == 0) {
         return 0;
     }
     return (votos * 100.0) / totalVotos;
 }
 
-string Opcion::obtenerId(){
+string Opcion::getId(){
     return this->idOpcion;
 }
 
-string Opcion::obtenerTexto(){
+string Opcion::getTexto(){
     return this->texto;
 }
 
-int Opcion::obtenerVotos(){
+int Opcion::getVotos(){
     return this->votos;
 }

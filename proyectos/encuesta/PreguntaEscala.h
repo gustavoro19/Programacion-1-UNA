@@ -9,7 +9,7 @@ class PreguntaEscala : public Pregunta {
     public:
         PreguntaEscala(string idPregunta, string titulo, string enunciado, bool obligatoria, int valorMinimo, int valorMaximo);
         bool validarRespuesta(Respuesta respuesta);
-        string obtenerTipo();
+        string getTipo();
         void mostrar();
 };
 #endif

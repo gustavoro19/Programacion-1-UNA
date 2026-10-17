@@ -16,11 +16,11 @@ class Pregunta {
         Pregunta(string idPregunta, string titulo, string enunciado, bool obligatoria);
         virtual ~Pregunta();
         virtual bool validarRespuesta(Respuesta respuesta) = 0;
-        virtual string obtenerTipo();
+        virtual string getTipo();
         virtual void mostrar();
-        string obtenerId();
-        string obtenerTitulo();
-        string obtenerEnunciado();
+        string getId();
+        string getTitulo();
+        string getEnunciado();
         bool esObligatoria();
 };
 #endif

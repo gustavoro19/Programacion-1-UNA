@@ -57,11 +57,11 @@ void Encuesta::cerrar(){
     activa = false;
 }
 
-vector<Pregunta*> Encuesta::obtenerPreguntas(){
+vector<Pregunta*> Encuesta::getPreguntas(){
     return preguntas;
 }
 
-int Encuesta::obtenerCantidadRespuestas(){
+int Encuesta::getCantidadRespuestas(){
     return cantidadRespuestas;
 }
 
@@ -73,22 +73,22 @@ bool Encuesta::estaActiva(){
     return this->activa;
 }
 
-string Encuesta::obtenerTitulo(){
+string Encuesta::getTitulo(){
     return this->titulo;
 }
 
-string Encuesta::obtenerId(){
+string Encuesta::getId(){
     return this->idEncuesta;
 }
 
-string Encuesta::obtenerDescripcion(){
+string Encuesta::getDescripcion(){
     return this->descripcion;
 }
 
-string Encuesta::obtenerFechaInicio(){
+string Encuesta::getFechaInicio(){
     return this->fechaInicio;
 }
 
-string Encuesta::obtenerFechaFin(){
+string Encuesta::getFechaFin(){
     return this->fechaFin;
 }

@@ -5,7 +5,6 @@
 #include "PreguntaOpcionMultiple.h"
 
 #include <iostream>
-#include <ctime>
 
 Participante::Participante(string idParticipante, string nombre, string email){
     this->idParticipante = idParticipante;
@@ -31,17 +30,13 @@ void Participante::responderEncuesta(Encuesta* encuesta){
         }
     }
 
-    time_t ahora = time(0);
-    string fecha = ctime(&ahora);
-    fecha = fecha.substr(0, fecha.length() - 1);
-
-    cout << endl << "=== " << encuesta->obtenerTitulo() << " ===" << endl;
-    vector<Pregunta*> preguntas = encuesta->obtenerPreguntas();
+    cout << endl << "=== " << encuesta->getTitulo() << " ===" << endl;
+    vector<Pregunta*> preguntas = encuesta->getPreguntas();
     for (int i = 0; i < (int)preguntas.size(); i++) {
         Pregunta* pregunta = preguntas[i];
         pregunta->mostrar();
 
-        string id = idParticipante + "-" + pregunta->obtenerId();
+        string id = idParticipante + "-" + pregunta->getId();
         string valor;
         bool valida = false;
         do {
@@ -51,16 +46,16 @@ void Participante::responderEncuesta(Encuesta* encuesta){
                 cout << endl << "No hay más entrada, se cancela la encuesta." << endl;
                 return;
             }
-            Respuesta prueba(id, valor, fecha, pregunta);
+            Respuesta prueba(id, valor, pregunta);
             valida = prueba.esValida();
             if (!valida) {
                 cout << "Respuesta no válida, intente de nuevo." << endl;
             }
         } while (!valida);
 
-        respuestas.push_back(new Respuesta(id, valor, fecha, pregunta));
+        respuestas.push_back(new Respuesta(id, valor, pregunta));
 
-        if (pregunta->obtenerTipo() == "Opción múltiple") {
+        if (pregunta->getTipo() == "Opción múltiple") {
             PreguntaOpcionMultiple* multiple = (PreguntaOpcionMultiple*) pregunta;
             multiple->registrarVotos(valor);
         }
@@ -71,18 +66,18 @@ void Participante::responderEncuesta(Encuesta* encuesta){
     cout << "Gracias, " << nombre << "." << endl;
 }
 
-vector<Respuesta*> Participante::obtenerRespuestas(){
+vector<Respuesta*> Participante::getRespuestas(){
     return respuestas;
 }
 
-string Participante::obtenerNombre(){
+string Participante::getNombre(){
     return this->nombre;
 }
 
-string Participante::obtenerId(){
+string Participante::getId(){
     return this->idParticipante;
 }
 
-string Participante::obtenerEmail(){
+string Participante::getEmail(){
     return this->email;
 }

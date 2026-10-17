@@ -10,7 +10,7 @@ PreguntaEscala::PreguntaEscala(string idPregunta, string titulo, string enunciad
 }
 
 bool PreguntaEscala::validarRespuesta(Respuesta respuesta){
-    string valor = respuesta.obtenerValor();
+    string valor = respuesta.getValor();
     if (valor == "") {
         return !esObligatoria();
     }
@@ -29,7 +29,7 @@ bool PreguntaEscala::validarRespuesta(Respuesta respuesta){
     return true;
 }
 
-string PreguntaEscala::obtenerTipo(){
+string PreguntaEscala::getTipo(){
     return "Escala";
 }
 
