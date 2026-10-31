@@ -12,7 +12,8 @@ Autor: Gustavo Rojas Porras.
 │   ├── lab2/            Condicionales y argumentos de main (argc/argv)
 │   │   └── borradores/  Versiones anteriores de los ejercicios del lab 2
 │   ├── lab3/            Arreglos (arrays) con ciclos for: suma, promedio, máximo
-│   └── lab4/            Ciclos (for, while, do-while) y menús
+│   ├── lab4/            Ciclos (for, while, do-while) y menús
+│   └── lab9/            Operaciones, binarios y calculadora con polimorfismo
 ├── clases/              Ejemplos vistos en clase, por fecha
 │   ├── 2026-09-18/      punteros/referencias, rectangulo, vectores
 │   ├── 2026-09-25/      torreDeHanoi
